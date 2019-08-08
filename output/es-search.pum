@@ -1,0 +1,8 @@
+
+      @startuml
+      class EsSearch {
+      +layout
++classNames
++ariaRole
+      }
+      @enduml

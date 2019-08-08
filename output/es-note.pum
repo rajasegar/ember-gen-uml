@@ -1,0 +1,13 @@
+
+      @startuml
+      class EsNote {
+      +layout
++classNames
++imageUrl
++mascots
++nameTitle
++defaultMessage
++init()
++_randomMascot()
+      }
+      @enduml

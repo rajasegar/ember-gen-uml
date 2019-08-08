@@ -1,0 +1,12 @@
+
+      @startuml
+      class EsBlogHeading {
+      +layout
++classNames
++author
++postDate
++postTitle
++postUrl
++isGuestPost
+      }
+      @enduml

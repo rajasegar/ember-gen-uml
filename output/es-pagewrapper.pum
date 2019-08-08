@@ -1,0 +1,10 @@
+
+      @startuml
+      class EsPagewrapper {
+      +layout
++classNameBindings
++hasAside
++ariaRole
++tagName
+      }
+      @enduml

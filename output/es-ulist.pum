@@ -1,0 +1,18 @@
+
+      @startuml
+      class EsUlist {
+      +layout
++classNames
++classNameBindings
++listId
++ariaLabelledby
++ariaLabel
++listItems
++listTitle
++hasImage
++hasLink
++hasBorder
++isUnorderedList
++isTitleVisible
+      }
+      @enduml

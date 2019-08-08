@@ -1,0 +1,20 @@
+
+      @startuml
+      class EsHeading {
+      +layout
++classNames
++classNameBindings
++attributeBindings
++tagName
++headingText
++ariaDescribedby
++ariaLabel
++ariaRole
++title
++hasIcon
++iconUrl
++iconLeft
++isPageHeading
++isCentered
+      }
+      @enduml

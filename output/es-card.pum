@@ -1,0 +1,13 @@
+
+      @startuml
+      class EsCard {
+      +layout
++classNames
++classNameBindings
++ariaDescribedby
++ariaLabel
++ariaRole
++title
++hasBorder
+      }
+      @enduml

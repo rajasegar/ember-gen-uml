@@ -1,0 +1,13 @@
+
+      @startuml
+      class EsHeader {
+      +layout
++attributeBindings
++classNames
++tagName
++ariaDescribedby
++ariaLabel
++ariaRole
++title
+      }
+      @enduml
