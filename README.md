@@ -23,16 +23,22 @@ or using npx:
 npx ember-gen-uml app/components --out=/Users/user/Desktop/uml-folder
 ```
 
+If you are using PODS layout for components, you need to pass `--pods` flag:
+
+```sh
+ember-gen-uml app/components --out=/Users/user/Desktop/uml-folder --pods
+```
+
 ### 3. Generate PNG files or SVG files using plantuml.jar
 ```sh
-java --jar ~/plantuml.jar /User/user/Desktop/uml-folder
+java -jar ~/plantuml.jar /User/user/Desktop/uml-folder/**.pu
 ```
 This will generate PNG files with UML diagrams in the same folder.
 
 To generate in SVG format
 
 ```sh
-java --jar ~/plantuml.jar -tsvg /User/user/Desktop/uml-folder
+java -jar ~/plantuml.jar -tsvg /User/user/Desktop/uml-folder/**.pu
 ```
 
 

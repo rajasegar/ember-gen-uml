@@ -55,10 +55,11 @@ function generate(inputDir, outDir, pods) {
           let props = args[len - 1].properties || [];
 
           memberDefs = props.map(prop => { 
+            const scope = prop.key.name.startsWith("_") ? "-" : "+";
             if(t.isObjectProperty(prop)) {
-              return `+${prop.key.name}`;
+              return `${scope}${prop.key.name}`;
             } else if(t.isObjectMethod(prop)) {
-              return `+${prop.key.name}()`;
+              return `${scope}${prop.key.name}()`;
             }
           });
           }
