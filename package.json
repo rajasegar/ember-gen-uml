@@ -1,17 +1,26 @@
 {
-  "name": "gen-uml",
+  "name": "ember-gen-uml",
   "version": "1.0.0",
-  "description": "",
+  "description": "A CLI to generate PlantUML compatible UML diagrams from Ember components",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "npm version patch && git push && git push --tags && npm publish",
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Rajasegar Chandran",
+  "bin": {
+    "ember-gen-uml": "bin/ember-gen-uml.js"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rajasegar/ember-gen-uml"
+  },
   "dependencies": {
     "@babel/parser": "^7.5.5",
     "@babel/traverse": "^7.5.5",
     "@babel/types": "^7.5.5",
+    "commander": "^3.0.0",
     "walk-sync": "^2.0.2"
   }
 }
