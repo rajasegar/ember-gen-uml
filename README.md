@@ -142,5 +142,5 @@ export default Component.extend({
 ```
 
 ## To
-![https://github.com/rajasegar/ember-gen-uml/blob/master/images/sample.png]
+![sample uml diagram](https://github.com/rajasegar/ember-gen-uml/blob/master/images/sample.png)
 
