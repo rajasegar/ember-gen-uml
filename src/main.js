@@ -49,16 +49,19 @@ function generate(inputDir, outDir, pods) {
           }
         }) {
           const args = p.node.declaration.arguments;
+          let memberDefs = [];
+          if(args) {
           const len = args.length;
-          let props = args[len - 1].properties;
+          let props = args[len - 1].properties || [];
 
-          let memberDefs = props.map(prop => { 
+          memberDefs = props.map(prop => { 
             if(t.isObjectProperty(prop)) {
               return `+${prop.key.name}`;
             } else if(t.isObjectMethod(prop)) {
               return `+${prop.key.name}()`;
             }
           });
+          }
 
           let umlData = `
       @startuml
