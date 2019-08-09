@@ -14,6 +14,10 @@ program
 .parse(process.argv);
 
 const generate = require('../src/main');
-generate(program.args[0], program.out, program.pods)
+if(program.args.length > 0) {
+  generate(program.args[0], program.out, program.pods)
+} else {
+  program.help();
+}
 
 
