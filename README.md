@@ -191,8 +191,10 @@ Usage: ember-gen-uml [path...] [options]
 
 Options:
 *  -v, --version     CLI Version
-*  -o, --out <path>  Store uml assets (.pu files) in <path>
+*  -o, --out <path>  Store PlantUML definitions (.pu files) in <path>
 *  --pods            Enable support for POD style components
 *  -h, --help        output usage information
 
-
+## References
+* [PlantUML](http://plantuml.com)
+* [PlantUML Class Diagrams](http://plantuml.com/class-diagram)

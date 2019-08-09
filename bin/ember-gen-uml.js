@@ -8,7 +8,7 @@ program
 .description(
   'A CLI to generate PlantUML compatible UML diagrams for Ember Components'
 )
-.option('-o, --out <path>', 'Store uml assets (.pu files) in <path>')
+.option('-o, --out <path>', 'Store PlantUML definitions (.pu files) in <path>')
 .option('--pods', 'Enable support for POD style components')
 .arguments('<path>')
 .parse(process.argv);
