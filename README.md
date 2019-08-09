@@ -1,4 +1,9 @@
 # ember-gen-uml
+[![npm](https://img.shields.io/npm/dm/ember-gen-uml.svg)](https://www.npmjs.com/package/ember-gen-uml)
+[![npm version](http://img.shields.io/npm/v/ember-gen-uml.svg?style=flat)](https://npmjs.org/package/ember-gen-uml "View this project on npm")
+[![dependencies Status](https://david-dm.org/rajasegar/ember-gen-uml/status.svg)](https://david-dm.org/rajasegar/ember-gen-uml)
+[![devDependencies Status](https://david-dm.org/rajasegar/ember-gen-uml/dev-status.svg)](https://david-dm.org/rajasegar/ember-gen-uml?type=dev)
+
 A CLI to generate PlantUML compatible diagrams from Ember Components source
 
 ## Usage
@@ -178,12 +183,10 @@ export default Component.extend({
 ## CLI Options/Usage
 Usage: ember-gen-uml [path...] [options]
 
-A CLI to generate PlantUML compatible UML diagrams for Ember Components
-
 Options:
-  -v, --version     CLI Version
-  -o, --out <path>  Store uml assets (.pu files) in <path>
-  --pods            Enable support for POD style components
-  -h, --help        output usage information
+*  -v, --version     CLI Version
+*  -o, --out <path>  Store uml assets (.pu files) in <path>
+*  --pods            Enable support for POD style components
+*  -h, --help        output usage information
 
 

@@ -6,13 +6,6 @@ const walkSync = require('walk-sync');
 const fs = require('fs');
 const path = require('path');
 
-// options
-/*
-const pods = false;
-const inputDir = 'components';
-const outDir = 'output';
-*/
-
 function generate(inputDir, outDir, pods) {
 
   const paths = walkSync(inputDir, { globs: ['**/*.js'], directories: false});
@@ -56,11 +49,8 @@ function generate(inputDir, outDir, pods) {
           }
         }) {
           const args = p.node.declaration.arguments;
-          //console.log(path.node.declaration.arguments);
           const len = args.length;
           let props = args[len - 1].properties;
-          //console.log(props);
-          //let props = path.node.declaration.arguments[0].properties;
 
           let memberDefs = props.map(prop => { 
             if(t.isObjectProperty(prop)) {
@@ -77,8 +67,6 @@ function generate(inputDir, outDir, pods) {
       }
       @enduml`;
 
-          //console.log(umlData);
-
           const data = new Uint8Array(Buffer.from(umlData));
           fs.mkdir(path.dirname(outFile), { recursive: true }, (err) => {
             if (err) throw err;
@@ -88,11 +76,9 @@ function generate(inputDir, outDir, pods) {
             });
           });
 
-
         }
       }
     });
-
 
   });
 
