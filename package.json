@@ -11,6 +11,7 @@
   "dependencies": {
     "@babel/parser": "^7.5.5",
     "@babel/traverse": "^7.5.5",
-    "@babel/types": "^7.5.5"
+    "@babel/types": "^7.5.5",
+    "walk-sync": "^2.0.2"
   }
 }

@@ -1,74 +1,99 @@
 const parser = require('@babel/parser');
 const traverse = require('@babel/traverse').default;
 const t = require('@babel/types');
+const walkSync = require('walk-sync');
 
 const fs = require('fs');
 const path = require('path');
 
-fs.readdir('components', function(err, files) {
-  //console.log(files);
-  files.filter(f => f !== '.DS_Store')
-    .forEach(f => {
-      const fileName = `components/${f}`;
-      //console.log(fileName);
-      const outFile = `output/${path.basename(fileName,'.js')}.pum`;
-      const capitalize = n => n.split('-').map(s => s[0].toUpperCase() + s.slice(1)).join('');
-        const componentName = capitalize(path.basename(fileName, '.js'));
-      //console.log(outFile);
-      const code = fs.readFileSync(`components/${f}`, 'utf-8');
-      const ast = parser.parse(code, {
-        sourceType: "module"
-      });
+// options
+const pods = false;
+//const inputDir = '/Users/user/Code/helpkit-ember/app/components';
+const inputDir = 'components';
+const outDir = 'output';
 
-      traverse(ast, {
-        ExportDefaultDeclaration(path) {
 
-          if(t.isExportDefaultDeclaration(path.node), {
-            declaration: {
-              callee: {
-                object: { name: "Component" },
-                property: { name: "extend" }
-              }
-            }
-          }) {
-            const args = path.node.declaration.arguments;
-            //console.log(path.node.declaration.arguments);
-            const len = args.length;
-            let props = args[len - 1].properties;
-            //console.log(props);
-            //let props = path.node.declaration.arguments[0].properties;
+const paths = walkSync(inputDir, { globs: ['**/*.js'], directories: false});
 
-            let memberDefs = props.map(p => { 
-              if(t.isObjectProperty(p)) {
-                return `+${p.key.name}`;
-              } else if(t.isObjectMethod(p)) {
-                return `+${p.key.name}()`;
-              }
-            });
+paths.forEach(f => {
+  let outFile = '';
 
-            let umlData = `
+  if(pods) {
+    outFile = `${outDir}/${path.dirname(f)}/component.pu`;
+  } else {
+    if(path.dirname(f) === '.') {
+    outFile = `${outDir}/${path.basename(f,'.js')}.pu`;
+    } else {
+
+    outFile = `${outDir}/${path.dirname(f)}/${path.basename(f,'.js')}.pu`;
+    }
+  }
+  console.log(outFile);
+
+  let componentName = '';
+  if(pods) {
+    componentName = path.dirname(f).toUpperCase();
+  } else {
+    const capitalize = n => n.split('-').map(s => s[0].toUpperCase() + s.slice(1)).join('');
+    componentName = capitalize(path.basename(f, '.js'));
+  }
+
+  const code = fs.readFileSync(`${inputDir}/${f}`, 'utf-8');
+  const ast = parser.parse(code, {
+    sourceType: "module"
+  });
+
+  traverse(ast, {
+    ExportDefaultDeclaration(p) {
+
+      if(t.isExportDefaultDeclaration(p.node), {
+        declaration: {
+          callee: {
+            object: { name: "Component" },
+            property: { name: "extend" }
+          }
+        }
+      }) {
+        const args = p.node.declaration.arguments;
+        //console.log(path.node.declaration.arguments);
+        const len = args.length;
+        let props = args[len - 1].properties;
+        //console.log(props);
+        //let props = path.node.declaration.arguments[0].properties;
+
+        let memberDefs = props.map(prop => { 
+          if(t.isObjectProperty(prop)) {
+            return `+${prop.key.name}`;
+          } else if(t.isObjectMethod(prop)) {
+            return `+${prop.key.name}()`;
+          }
+        });
+
+        let umlData = `
       @startuml
       class ${componentName} {
       ${memberDefs.join('\n')}
       }
       @enduml`;
 
-            //console.log(umlData);
+        //console.log(umlData);
 
-            const data = new Uint8Array(Buffer.from(umlData));
-            fs.writeFile(outFile, data, (err) => {
-              if (err) throw err;
-              console.log(`The file: ${outFile} has been saved!`);
-            });
+        const data = new Uint8Array(Buffer.from(umlData));
+        fs.mkdir(path.dirname(outFile), { recursive: true }, (err) => {
+          if (err) throw err;
+          fs.writeFile(outFile, data, (err) => {
+            if (err) throw err;
+            console.log(`The file: ${outFile} has been saved!`);
+          });
+        });
 
-          }
-        }
-      });
+
+      }
+    }
+  });
 
 
-    });
 });
-
 
 
 
