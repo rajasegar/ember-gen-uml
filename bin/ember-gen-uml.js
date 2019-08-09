@@ -3,6 +3,7 @@
 const program = require('commander');
 
 program
+.version('1.0.1')
 .usage('[path...] [options]')
 .description(
   'A CLI to generate PlantUML compatible UML diagrams for Ember Components'
