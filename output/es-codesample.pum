@@ -1,7 +1,0 @@
-
-      @startuml
-      class EsCodesample {
-      +layout
-+classNames
-      }
-      @enduml

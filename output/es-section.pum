@@ -1,6 +1,0 @@
-
-      @startuml
-      class EsSection {
-      +layout
-      }
-      @enduml

@@ -20,48 +20,15 @@ import {
   A,
 } from '@ember/array';
 
-/**
-  EsAccordion Usage:
-  @class EsAccordion
-  @namespace Components
-  @extends Ember.Component
-  @public
-*/
+
 export default Component.extend({
   layout,
 
   classNames: ['accordion-group'],
-
-  /**
-  * activeItem
-  *
-  * @field activeItem
-  * @type null
-  * @public
-  */
   activeItem: null,
-  /**
-  * focusIndex
-  *
-  * @field focusIndex
-  * @type null
-  * @public
-  */
   focusIndex: null,
-  /**
-  * accordionItemIndexes
-  *
-  * @field accordionItemIndexes
-  * @type null
-  * @public
-  */
   accordionItemIndexes: null,
 
-  /**
-  * accordionState
-  *
-  * @computed accordionState
-  */
   accordionState: computed('activeItem', 'focusIndex', function() {
     const {
       activeItem,
@@ -82,26 +49,13 @@ export default Component.extend({
     };
   }),
 
-  /**
-  * init
-  *
-  * @method init
-  * @public
-  *
-  */
   init() {
     this._super(...arguments);
 
     set(this, 'accordionItemIndexes', []);
   },
 
-  /**
-  * keyDown
-  *
-  * @method keyDown
-  * @public
-  * @param {any} e
-  */
+
   keyDown(e) {
     const keyCode = get(e, 'keyCode');
     const focusIndex = get(this, 'focusIndex');
@@ -113,13 +67,7 @@ export default Component.extend({
     }
   },
 
-  /**
-  * _resolveTargetItemIndex
-  *
-  * @method _resolveTargetItemIndex
-  * @private
-  * @param {any} keyCode
-  */
+
   _resolveTargetItemIndex(keyCode) {
     const {
       accordionItemIndexes,
@@ -177,21 +125,7 @@ export default Component.extend({
     return targetIndex;
   },
 
-  /**
-  * actions
-  *
-  * @field actions
-  * @type undefined
-  * @public
-  */
   actions: {
-    /**
-     * setActiveItem
-     * @method setActiveItem
-     * @param {any} accordionItemIndex
-     * @public
-     */
-
     setActiveItem(accordionItemIndex) {
       return set(this, 'activeItem', accordionItemIndex);
     },
@@ -208,5 +142,5 @@ export default Component.extend({
 ```
 
 ## To
-![images/sample.png]
+![https://github.com/rajasegar/ember-gen-uml/blob/master/images/sample.png]
 

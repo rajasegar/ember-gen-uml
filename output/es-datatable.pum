@@ -1,7 +1,0 @@
-
-      @startuml
-      class EsDatatable {
-      +layout
-+classNames
-      }
-      @enduml
