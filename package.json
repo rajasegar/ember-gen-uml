@@ -13,6 +13,7 @@
   "scripts": {
     "test": "nyc mocha --forbid-only tests/*.test.js",
     "deploy": "npm version patch && git push && git push --tags && npm publish",
+    "deploy-feat": "npm version minor && git push && git push --tags && npm publish",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint src/"
   },
