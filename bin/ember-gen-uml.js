@@ -4,7 +4,7 @@ const program = require('commander');
 const generate = require('../src/main');
 
 program
-.version('1.1.0','-v, --version', 'CLI Version')
+.version('1.2.0','-v, --version', 'CLI Version')
 .usage('[path...] [options]')
 .description(
   'A CLI to generate PlantUML compatible UML diagrams for Ember Components'
