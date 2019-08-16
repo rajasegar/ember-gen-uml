@@ -67,7 +67,6 @@ class ${componentName} {
 
   return umlData;
 
-
 }
 
 module.exports = transform;

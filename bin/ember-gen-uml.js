@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const program = require('commander');
+const generate = require('../src/main');
 
 program
 .version('1.1.0','-v, --version', 'CLI Version')
@@ -13,7 +14,6 @@ program
 .arguments('<path>')
 .parse(process.argv);
 
-const generate = require('../src/main');
 if(program.args.length > 0) {
   generate(program.args[0], program.out, program.pods)
 } else {

@@ -13,7 +13,8 @@
   "scripts": {
     "test": "nyc mocha --forbid-only tests/*.test.js",
     "deploy": "npm version patch && git push && git push --tags && npm publish",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "eslint src/"
   },
   "author": "Rajasegar Chandran",
   "bugs": "https://github.com/rajasegar/ember-gen-uml/issues",
@@ -37,7 +38,10 @@
   },
   "devDependencies": {
     "coveralls": "^3.0.6",
+    "eslint": "^6.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "mocha": "^6.2.0",
-    "nyc": "^14.1.1"
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.2"
   }
 }
