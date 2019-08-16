@@ -1,4 +1,7 @@
 # ember-gen-uml
+
+[![Build Status](https://travis-ci.org/rajasegar/ember-gen-uml.svg?branch=master)](https://travis-ci.org/rajasegar/ember-gen-uml) 
+[![Coverage Status](https://coveralls.io/repos/github/rajasegar/ember-gen-uml/badge.svg?branch=master)](https://coveralls.io/github/rajasegar/ember-gen-uml?branch=master)
 [![npm](https://img.shields.io/npm/dm/ember-gen-uml.svg)](https://www.npmjs.com/package/ember-gen-uml)
 [![npm version](http://img.shields.io/npm/v/ember-gen-uml.svg?style=flat)](https://npmjs.org/package/ember-gen-uml "View this project on npm")
 [![dependencies Status](https://david-dm.org/rajasegar/ember-gen-uml/status.svg)](https://david-dm.org/rajasegar/ember-gen-uml)
