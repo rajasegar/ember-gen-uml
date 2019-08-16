@@ -11,8 +11,9 @@
     "documentation"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "npm version patch && git push && git push --tags && npm publish"
+    "test": "nyc mocha --forbid-only tests/*.test.js",
+    "deploy": "npm version patch && git push && git push --tags && npm publish",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "Rajasegar Chandran",
   "bugs": "https://github.com/rajasegar/ember-gen-uml/issues",
@@ -33,5 +34,10 @@
     "@babel/types": "^7.5.5",
     "commander": "^3.0.0",
     "walk-sync": "^2.0.2"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.6",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1"
   }
 }

@@ -1,7 +1,6 @@
-const parser = require('@babel/parser');
-const traverse = require('@babel/traverse').default;
-const t = require('@babel/types');
 const walkSync = require('walk-sync');
+
+const transform = require('./transform');
 
 const fs = require('fs');
 const path = require('path');
@@ -25,63 +24,25 @@ function generate(inputDir, outDir, pods) {
     }
 
     let componentName = '';
+    const capitalize = n => n.split('-').map(s => s[0].toUpperCase() + s.slice(1)).join('');
     if(pods) {
-      componentName = path.dirname(f).toUpperCase();
+      componentName = path.dirname(f).split('/').map(capitalize).join('_');
     } else {
-      const capitalize = n => n.split('-').map(s => s[0].toUpperCase() + s.slice(1)).join('');
       componentName = capitalize(path.basename(f, '.js'));
     }
 
+    //console.log(componentName);
+
+    //console.log(`${inputDir}/${f}`);
     const code = fs.readFileSync(`${inputDir}/${f}`, 'utf-8');
-    const ast = parser.parse(code, {
-      sourceType: "module"
-    });
-
-    traverse(ast, {
-      ExportDefaultDeclaration(p) {
-
-        if(t.isExportDefaultDeclaration(p.node), {
-          declaration: {
-            callee: {
-              object: { name: "Component" },
-              property: { name: "extend" }
-            }
-          }
-        }) {
-          const args = p.node.declaration.arguments;
-          let memberDefs = [];
-          if(args) {
-          const len = args.length;
-          let props = args[len - 1].properties || [];
-
-          memberDefs = props.map(prop => { 
-            const scope = prop.key.name.startsWith("_") ? "-" : "+";
-            if(t.isObjectProperty(prop)) {
-              return `${scope}${prop.key.name}`;
-            } else if(t.isObjectMethod(prop)) {
-              return `${scope}${prop.key.name}()`;
-            }
-          });
-          }
-
-          let umlData = `
-      @startuml
-      class ${componentName} {
-      ${memberDefs.join('\n')}
-      }
-      @enduml`;
-
-          const data = new Uint8Array(Buffer.from(umlData));
-          fs.mkdir(path.dirname(outFile), { recursive: true }, (err) => {
-            if (err) throw err;
-            fs.writeFile(outFile, data, (err) => {
-              if (err) throw err;
-              console.log(`The file: ${outFile} has been saved!`);
-            });
-          });
-
-        }
-      }
+    const umlData = transform(code, componentName);
+    const data = new Uint8Array(Buffer.from(umlData));
+    fs.mkdir(path.dirname(outFile), { recursive: true }, (err) => {
+      if (err) throw err;
+      fs.writeFile(outFile, data, (err) => {
+        if (err) throw err;
+        console.log(`The file: ${outFile} has been saved!`);
+      });
     });
 
   });
