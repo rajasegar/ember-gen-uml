@@ -13,6 +13,7 @@ export default Component.extend({
     const output = `
 @startuml
 
+
 class MyClass {
   +prop1
 }
@@ -34,6 +35,7 @@ export default Component.extend({
 
     const output = `
 @startuml
+
 
 class MyClass {
   +prop1
@@ -58,6 +60,7 @@ export default Component.extend({
     const output = `
 @startuml
 
+
 class MyClass {
   -_prop1
 }
@@ -81,6 +84,7 @@ export default Component.extend({
     const output = `
 @startuml
 
+
 class MyClass {
   +method1()
 }
@@ -102,6 +106,7 @@ export default Component.extend({
 
     const output = `
 @startuml
+
 
 class MyClass {
   -_method1()
@@ -125,6 +130,7 @@ export default Component.extend({
 
     const output = `
 @startuml
+
 class marketplace << (S, #FF7700) >>
 MyClass ..> marketplace : service
 class overlay << (S, #FF7700) >>
@@ -140,4 +146,34 @@ class MyClass {
 
     assert.strictEqual(uml,output);
   });
+
+
+it("should generate transform extends properly", function() {
+
+    const input = `
+export default Component.extend(Component1, Mixin1, {
+  marketplace: service(),
+  overlay: service()
+})`;
+
+    const output = `
+@startuml
+Component1 <|-- MyClass
+Mixin1 <|-- MyClass
+class marketplace << (S, #FF7700) >>
+MyClass ..> marketplace : service
+class overlay << (S, #FF7700) >>
+MyClass ..> overlay : service
+class MyClass {
+  +marketplace
+  +overlay
+}
+
+@enduml`;
+
+    const uml = transform(input, "MyClass");
+
+    assert.strictEqual(uml,output);
+  });
+
 });

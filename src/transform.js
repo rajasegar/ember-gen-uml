@@ -26,8 +26,23 @@ function transform(code, componentName) {
         const args = p.node.declaration.arguments;
         let memberDefs = [];
         let serviceDefs = [];
+        let extendDefs = [];
+
         if(args) {
           const len = args.length;
+
+          // extending other components or mixins
+          if(len > 1) {
+
+            const parentClasses = args.slice(0, len - 1);
+            parentClasses.forEach( parent => {
+
+              let extension =  `${parent.name} <|-- ${componentName}`;
+              extendDefs.push(extension);
+            });
+
+          }
+
           let props = args[len - 1].properties || [];
 
           memberDefs = props.map(prop => { 
@@ -53,6 +68,7 @@ function transform(code, componentName) {
 
         umlData = `
 @startuml
+${extendDefs.length > 0 ? extendDefs.join('\n') : ''}
 ${serviceDefs.length > 0 ? serviceDefs.join('\n') : ''}
 class ${componentName} {
   ${memberDefs.join('\n  ')}

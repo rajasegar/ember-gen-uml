@@ -9,6 +9,8 @@ function generate(inputDir, outDir, pods) {
 
   const paths = walkSync(inputDir, { globs: ['**/*.js'], directories: false});
 
+  console.log(`Processing ${paths.length} files...`);
+
   paths.forEach(f => {
     let outFile = '';
 
@@ -31,9 +33,7 @@ function generate(inputDir, outDir, pods) {
       componentName = capitalize(path.basename(f, '.js'));
     }
 
-    //console.log(componentName);
 
-    //console.log(`${inputDir}/${f}`);
     const code = fs.readFileSync(`${inputDir}/${f}`, 'utf-8');
     const umlData = transform(code, componentName);
     const data = new Uint8Array(Buffer.from(umlData));
@@ -41,11 +41,12 @@ function generate(inputDir, outDir, pods) {
       if (err) throw err;
       fs.writeFile(outFile, data, (err) => {
         if (err) throw err;
-        console.log(`The file: ${outFile} has been saved!`);
       });
     });
 
   });
+
+  console.log('All done.');
 
 }
 
