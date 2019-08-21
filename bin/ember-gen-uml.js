@@ -11,11 +11,16 @@ program
 )
 .option('-o, --out <path>', 'Store PlantUML definitions (.pu files) in <path>')
 .option('--pods', 'Enable support for POD style components')
+.option('--ts', 'Enable support for Typescript components')
 .arguments('<path>')
 .parse(process.argv);
 
 if(program.args.length > 0) {
-  generate(program.args[0], program.out, program.pods)
+  const options = {
+    pods: program.pods,
+    ts: program.ts
+  };
+  generate(program.args[0], program.out, options)
 } else {
   program.help();
 }

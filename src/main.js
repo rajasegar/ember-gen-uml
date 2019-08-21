@@ -1,13 +1,19 @@
 const walkSync = require('walk-sync');
 
 const transform = require('./transform');
+const transformTS = require('./transform-typescript');
 
 const fs = require('fs');
 const path = require('path');
 
-function generate(inputDir, outDir, pods) {
+function generate(inputDir, outDir, options) {
 
-  const paths = walkSync(inputDir, { globs: ['**/*.js'], directories: false});
+  const { pods, ts } = options;
+
+  const _glob = ts ? '**/*.ts' : '**/*.js';
+  const _ext = ts ? '.ts' : '.js';
+
+  const paths = walkSync(inputDir, { globs: [_glob], directories: false});
 
   console.log(`Processing ${paths.length} files...`);
 
@@ -18,10 +24,10 @@ function generate(inputDir, outDir, pods) {
       outFile = `${outDir}/${path.dirname(f)}/component.pu`;
     } else {
       if(path.dirname(f) === '.') {
-        outFile = `${outDir}/${path.basename(f,'.js')}.pu`;
+        outFile = `${outDir}/${path.basename(f,_ext)}.pu`;
       } else {
 
-        outFile = `${outDir}/${path.dirname(f)}/${path.basename(f,'.js')}.pu`;
+        outFile = `${outDir}/${path.dirname(f)}/${path.basename(f,_ext)}.pu`;
       }
     }
 
@@ -30,12 +36,19 @@ function generate(inputDir, outDir, pods) {
     if(pods) {
       componentName = path.dirname(f).split('/').map(capitalize).join('_');
     } else {
-      componentName = capitalize(path.basename(f, '.js'));
+      componentName = capitalize(path.basename(f, _ext));
     }
 
 
     const code = fs.readFileSync(`${inputDir}/${f}`, 'utf-8');
-    const umlData = transform(code, componentName);
+    let umlData = '';
+    if(ts) {
+     umlData = transformTS(f, code, componentName);
+    } else {
+     umlData = transform(code, componentName);
+    }
+
+    console.log(umlData);
     const data = new Uint8Array(Buffer.from(umlData));
     fs.mkdir(path.dirname(outFile), { recursive: true }, (err) => {
       if (err) throw err;

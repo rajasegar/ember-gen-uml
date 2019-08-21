@@ -33,6 +33,8 @@ ember-gen-uml app/components --out=/Users/user/Desktop/uml-folder --pods
 ```
 
 ### 3. Generate PNG files or SVG files using plantuml.jar
+Download the [plantuml.jar](http://sourceforge.net/projects/plantuml/files/plantuml.jar/download) from the official [website](http://plantuml.com/index).
+
 ```sh
 java -jar ~/plantuml.jar /User/user/Desktop/uml-folder/**.pu
 ```
