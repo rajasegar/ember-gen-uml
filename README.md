@@ -198,6 +198,7 @@ Options:
 *  -v, --version     CLI Version
 *  -o, --out <path>  Store PlantUML definitions (.pu files) in <path>
 *  --pods            Enable support for POD style components
+*  --ts              Enable support for TypeScript components
 *  -h, --help        output usage information
 
 ## References
