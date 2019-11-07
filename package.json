@@ -31,18 +31,18 @@
     "url": "https://github.com/rajasegar/ember-gen-uml"
   },
   "dependencies": {
-    "@babel/parser": "^7.5.5",
-    "@babel/traverse": "^7.5.5",
-    "@babel/types": "^7.5.5",
-    "commander": "^3.0.0",
-    "typescript": "^3.5.3",
+    "@babel/parser": "^7.7.2",
+    "@babel/traverse": "^7.7.2",
+    "@babel/types": "^7.7.2",
+    "commander": "^4.0.0",
+    "typescript": "^3.7.2",
     "walk-sync": "^2.0.2"
   },
   "devDependencies": {
-    "coveralls": "^3.0.6",
-    "eslint": "^6.1.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "mocha": "^6.2.0",
+    "coveralls": "^3.0.7",
+    "eslint": "^6.6.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "mocha": "^6.2.2",
     "nyc": "^14.1.1",
     "prettier": "^1.18.2"
   }
