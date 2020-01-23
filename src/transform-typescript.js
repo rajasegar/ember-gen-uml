@@ -1,11 +1,13 @@
 const ts = require('typescript');
 
-const KIND_PROPERTY_DECLARATION = 155;
-const KIND_METHOD_DECLARATION = 157;
+const KIND_PROPERTY_DECLARATION = 158;
+const KIND_METHOD_DECLARATION = 160;
+
+const filterKinds = [KIND_PROPERTY_DECLARATION, KIND_METHOD_DECLARATION];
 
 const kindMap = {
-  '124': 'Boolean',
-  '139': 'String',
+  '127': 'Boolean',
+  '142': 'String',
 };
 
 function transform(fileName, code, componentName) {
@@ -44,8 +46,8 @@ class ${componentName} {
             if (_extends === 'Component') {
               node.members
                 .filter(
-                  prop =>
-                    prop.kind === KIND_PROPERTY_DECLARATION || prop.kind === KIND_METHOD_DECLARATION
+                  prop => filterKinds.includes(prop.kind)
+                  //prop.kind === KIND_PROPERTY_DECLARATION || prop.kind === KIND_METHOD_DECLARATION
                 )
                 .forEach(prop => {
                   //console.log(prop.name.text);

@@ -15,7 +15,8 @@
     "deploy": "npm version patch && git push && git push --tags && npm publish",
     "deploy-feat": "npm version minor && git push && git push --tags && npm publish",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "debug": "node --inspect-brk ./node_modules/.bin/mocha --forbid-only tests/*.test.js"
   },
   "author": "Rajasegar Chandran",
   "bugs": "https://github.com/rajasegar/ember-gen-uml/issues",

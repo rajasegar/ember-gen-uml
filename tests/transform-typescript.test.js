@@ -1,10 +1,8 @@
-const assert = require("assert");
-const transform = require("../src/transform-typescript");
+const assert = require('assert');
+const transform = require('../src/transform-typescript');
 
-describe("transform typescript test: ", function() {
-
-  it("should generate transform public property properly", function() {
-
+describe('transform typescript test: ', function() {
+  it('should generate transform public property properly', function() {
     const input = `
 export default class MyClass extends Component{
   prop1: boolean = true;
@@ -20,13 +18,12 @@ class MyClass {
 
 @enduml`;
 
-    const uml = transform("my-class.ts", input, "MyClass");
+    const uml = transform('my-class.ts', input, 'MyClass');
 
-    assert.strictEqual(uml,output);
+    assert.strictEqual(uml, output);
   });
 
-  it("should generate multiple properties properly", function() {
-
+  it('should generate multiple properties properly', function() {
     const input = `
 export default class MyClass extends Component{
   prop1: boolean =  true;
@@ -44,15 +41,12 @@ class MyClass {
 
 @enduml`;
 
-    const uml = transform("my-class.ts", input, "MyClass");
+    const uml = transform('my-class.ts', input, 'MyClass');
 
-    assert.strictEqual(uml,output);
+    assert.strictEqual(uml, output);
   });
 
-
-
-  it("should generate  public method properly", function() {
-
+  it('should generate  public method properly', function() {
     const input = `
 export default class MyClass extends Component{
   method1() {
@@ -69,14 +63,12 @@ class MyClass {
 
 @enduml`;
 
-    const uml = transform("my-class.ts", input, "MyClass");
+    const uml = transform('my-class.ts', input, 'MyClass');
 
-    assert.strictEqual(uml,output);
+    assert.strictEqual(uml, output);
   });
 
-
-it("should generate transform service properties  properly", function() {
-
+  it('should generate transform service properties  properly', function() {
     const input = `
 export default class MyClass extends Component{
   @service i18n!: I18N;
@@ -96,11 +88,8 @@ class MyClass {
 
 @enduml`;
 
-    const uml = transform("my-class.ts", input, "MyClass");
+    const uml = transform('my-class.ts', input, 'MyClass');
 
-    assert.strictEqual(uml,output);
+    assert.strictEqual(uml, output);
   });
-
-
-
 });
