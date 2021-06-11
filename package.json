@@ -16,7 +16,7 @@
     "deploy-feat": "npm version minor && git push && git push --tags && npm publish",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint src/",
-    "debug": "node --inspect-brk ./node_modules/.bin/mocha --forbid-only tests/*.test.js"
+    "debug": "node --inspect-brk ./node_modules/mocha/bin/mocha --forbid-only tests/*.test.js"
   },
   "author": "Rajasegar Chandran",
   "bugs": "https://github.com/rajasegar/ember-gen-uml/issues",
@@ -36,6 +36,7 @@
     "@babel/traverse": "^7.7.2",
     "@babel/types": "^7.7.2",
     "commander": "^4.0.0",
+    "debug": "^4.3.1",
     "typescript": "^3.7.2",
     "walk-sync": "^2.0.2"
   },

@@ -1,14 +1,12 @@
 const ts = require('typescript');
+const debug = require('debug')('ember-gen-uml');
 
-const KIND_PROPERTY_DECLARATION = 158;
-const KIND_METHOD_DECLARATION = 160;
+const filterKinds = [ts.SyntaxKind.PropertyDeclaration, ts.SyntaxKind.MethodDeclaration];
 
-const filterKinds = [KIND_PROPERTY_DECLARATION, KIND_METHOD_DECLARATION];
+const kindMap = {};
 
-const kindMap = {
-  '127': 'Boolean',
-  '142': 'String',
-};
+kindMap[ts.SyntaxKind.BooleanKeyword] = 'Boolean';
+kindMap[ts.SyntaxKind.StringKeyword] = 'String';
 
 function transform(fileName, code, componentName) {
   let memberDefs = [];
@@ -17,7 +15,7 @@ function transform(fileName, code, componentName) {
 
   const ast = ts.createSourceFile(fileName, code, ts.ScriptTarget.ES2015, /*setParentNodes */ true);
 
-  //console.log(ast);
+  //debug(ast);
 
   traverse(ast);
   const umlData = `
@@ -35,7 +33,7 @@ class ${componentName} {
   function traverse(node) {
     switch (node.kind) {
       case ts.SyntaxKind.ClassDeclaration:
-        //console.log(node.heritageClauses[0].types[0].expression.escapedText);
+        debug(node.heritageClauses[0].types[0].expression.escapedText);
         if (node.heritageClauses[0]) {
           if (node.heritageClauses[0].types[0]) {
             let _extends = node.heritageClauses[0].types[0].expression.text;
@@ -45,14 +43,14 @@ class ${componentName} {
 
             if (_extends === 'Component') {
               node.members
-                .filter(
-                  prop => filterKinds.includes(prop.kind)
-                  //prop.kind === KIND_PROPERTY_DECLARATION || prop.kind === KIND_METHOD_DECLARATION
-                )
+                .filter(prop => {
+                  debug('Property name: ', prop.name.text);
+                  debug('Property kind: ', prop.kind);
+                  return filterKinds.includes(prop.kind);
+                })
                 .forEach(prop => {
-                  //console.log(prop.name.text);
                   let keyName = prop.name.text;
-                  let isMethod = prop.kind === KIND_METHOD_DECLARATION;
+                  let isMethod = prop.kind === ts.SyntaxKind.MethodDeclaration;
                   let isService =
                     prop.decorators && prop.decorators[0].expression.text === 'service';
                   const scope = keyName.startsWith('_') ? '-' : '+';

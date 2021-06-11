@@ -1,3 +1,4 @@
+/* globals describe it */
 const assert = require('assert');
 const transform = require('../src/transform-typescript');
 
