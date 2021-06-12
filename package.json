@@ -11,12 +11,11 @@
     "documentation"
   ],
   "scripts": {
-    "test": "nyc mocha --forbid-only tests/*.test.js",
+    "test": "jest --coverage",
     "deploy": "npm version patch && git push && git push --tags && npm publish",
     "deploy-feat": "npm version minor && git push && git push --tags && npm publish",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint src/",
-    "debug": "node --inspect-brk ./node_modules/mocha/bin/mocha --forbid-only tests/*.test.js"
+    "debug": "node --inspect-brk ./node_modules/jest/bin/jest.js"
   },
   "author": "Rajasegar Chandran",
   "bugs": "https://github.com/rajasegar/ember-gen-uml/issues",
@@ -24,7 +23,7 @@
     "ember-gen-uml": "bin/ember-gen-uml.js"
   },
   "engines": {
-    "node": ">=8.10.0"
+    "node": ">=12.0.0"
   },
   "license": "MIT",
   "repository": {
@@ -32,9 +31,12 @@
     "url": "https://github.com/rajasegar/ember-gen-uml"
   },
   "dependencies": {
-    "@babel/parser": "^7.7.2",
-    "@babel/traverse": "^7.7.2",
-    "@babel/types": "^7.7.2",
+    "@babel/parser": "^7.14.5",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/plugin-proposal-decorators": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "@babel/traverse": "^7.14.5",
+    "@babel/types": "^7.14.5",
     "commander": "^4.0.0",
     "debug": "^4.3.1",
     "typescript": "^3.7.2",
@@ -44,8 +46,7 @@
     "coveralls": "^3.0.7",
     "eslint": "^6.6.0",
     "eslint-plugin-prettier": "^3.1.1",
-    "mocha": "^6.2.2",
-    "nyc": "^14.1.1",
+    "jest": "^27.0.4",
     "prettier": "^1.18.2"
   }
 }

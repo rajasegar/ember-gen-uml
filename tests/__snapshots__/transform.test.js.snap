@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should generate model uml properly 1`] = `
+"
+@startuml
+Model <|-- PersonModel
+
+class PersonModel {
+  +title
+  +name
+  +birthday
+}
+
+@enduml"
+`;
+
+exports[`should generate transform multiple properties properly 1`] = `
+"
+@startuml
+Component <|-- MyComponent
+
+class MyComponent {
+  +prop1
+  +prop2
+}
+
+@enduml"
+`;
+
+exports[`should generate transform public method properly 1`] = `
+"
+@startuml
+Component <|-- MyComponent
+
+class MyComponent {
+  +method1()
+}
+
+@enduml"
+`;
+
+exports[`should generate transform public property properly 1`] = `
+"
+@startuml
+Component <|-- MyComponent
+
+class MyComponent {
+  +prop1
+}
+
+@enduml"
+`;
+
+exports[`should generate transform service properties  properly 1`] = `
+"
+@startuml
+Component <|-- MyComponent
+class marketplace << (S, #FF7700) >>
+MyComponent ..> marketplace : service
+class overlay << (S, #FF7700) >>
+MyComponent ..> overlay : service
+class MyComponent {
+  
+}
+
+@enduml"
+`;
