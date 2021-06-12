@@ -1,82 +1,107 @@
 const parser = require('@babel/parser');
 const traverse = require('@babel/traverse').default;
 const t = require('@babel/types');
+const debug = require('debug')('ember-gen-uml');
 
-function transform(code, componentName) {
+function transform(code) {
   const ast = parser.parse(code, {
     sourceType: 'module',
+    plugins: [['decorators-legacy', { decoratorsBeforeExport: false }]],
   });
 
   let umlData = '';
 
+  let memberDefs = [];
+  let serviceDefs = [];
+  let extendDefs = [];
+  let className = '';
   traverse(ast, {
     ExportDefaultDeclaration(p) {
-      if (
-        (t.isExportDefaultDeclaration(p.node), // eslint-disable-line
-        {
-          // eslint-disable-line
-          declaration: {
-            callee: {
-              object: { name: 'Component' },
-              property: { name: 'extend' },
-            },
-          },
-        })
-      ) {
-        const args = p.node.declaration.arguments;
-        let memberDefs = [];
-        let serviceDefs = [];
-        let extendDefs = [];
+      debugger;
+      if (p.node.declaration.type === 'ClassDeclaration') {
+        className = p.node.declaration.id.name;
 
-        if (args) {
-          const len = args.length;
+        // Disabling extensions since it is verbose
+        //const superClass = p.node.declaration.superClass.name;
+        //let extension = `${superClass} <|-- ${className}`;
+        //extendDefs.push(extension);
 
-          // extending other components or mixins
-          if (len > 1) {
-            const parentClasses = args.slice(0, len - 1);
-            parentClasses.forEach(parent => {
-              let extension = `${parent.name} <|-- ${componentName}`;
-              extendDefs.push(extension);
-            });
-          }
+        let props = p.node.declaration.body.body;
 
-          let props = args[len - 1].properties || [];
-
-          memberDefs = props.map(prop => {
-            let keyName = prop.key.type === 'StringLiteral' ? prop.key.value : prop.key.name;
+        memberDefs = props
+          .filter(prop => !prop.decorators)
+          .map(prop => {
+            let keyName = prop.key.name;
             const scope = keyName.startsWith('_') ? '-' : '+';
-            if (t.isObjectProperty(prop)) {
+            if (t.isClassProperty(prop)) {
               return `${scope}${keyName}`;
-            } else if (t.isObjectMethod(prop)) {
+            } else if (t.isClassMethod(prop)) {
               return `${scope}${keyName}()`;
             }
           });
 
-          props.forEach(prop => {
-            if (
-              prop.value &&
-              prop.value.type === 'CallExpression' &&
-              prop.value.callee.name === 'service'
-            ) {
-              let serviceDef = `class ${prop.key.name} << (S, #FF7700) >>\n`;
-              serviceDef += `${componentName} ..> ${prop.key.name} : service`;
-              serviceDefs.push(serviceDef);
-            }
-          });
-        }
+        props.forEach(prop => {
+          if (prop.decorators) {
+            const [decorator] = prop.decorators;
+            if (decorator.expression.type === 'Identifier') {
+              switch (decorator.expression.name) {
+                case 'service':
+                  {
+                    let serviceDef = `class ${prop.key.name} << (S, #FF7700) >>\n`;
+                    serviceDef += `${className} ..> ${prop.key.name} : service`;
+                    serviceDefs.push(serviceDef);
+                  }
+                  break;
 
-        umlData = `
+                case 'attr':
+                  memberDefs.push(`+${prop.key.name}`);
+                  break;
+
+                default:
+                  debug('Unknown decorator: ', decorator.expression.name);
+              }
+            } else {
+              const decoratorName = decorator.expression.callee.name;
+              const argValue = decorator.expression.arguments[0].value;
+              switch (decoratorName) {
+                case 'attr':
+                  memberDefs.push(`+${prop.key.name}: ${argValue}`);
+                  break;
+
+                case 'belongsTo':
+                  {
+                    let aggregation = `${argValue} o-- "belongsTo" ${className} `;
+                    extendDefs.push(aggregation);
+                    memberDefs.push(`+${prop.key.name}`);
+                  }
+                  break;
+
+                case 'hasMany':
+                  {
+                    let composition = `${argValue} *-- "hasMany" ${className} `;
+                    extendDefs.push(composition);
+                    memberDefs.push(`+${prop.key.name}`);
+                  }
+                  break;
+
+                default:
+                  debug('Unknown decorator: ', decorator.expression.callee.name);
+              }
+            }
+          }
+        });
+      }
+    },
+  });
+  umlData = `
 @startuml
 ${extendDefs.length > 0 ? extendDefs.join('\n') : ''}
 ${serviceDefs.length > 0 ? serviceDefs.join('\n') : ''}
-class ${componentName} {
+class ${className} {
   ${memberDefs.join('\n  ')}
 }
 
 @enduml`;
-      }
-    },
-  });
 
   return umlData;
 }

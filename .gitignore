@@ -6,3 +6,4 @@ vim-markdown-preview.html
 *-debug.log
 *-error.log
 /.nyc_output
+coverage/

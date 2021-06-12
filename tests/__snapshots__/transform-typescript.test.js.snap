@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should generate  public method properly 1`] = `
+"
+@startuml
+
+
+class MyClass {
+  +method1()
+}
+
+@enduml"
+`;
+
+exports[`should generate multiple properties properly 1`] = `
+"
+@startuml
+
+
+class MyClass {
+  +prop1 : Boolean
+  +prop2 : String
+}
+
+@enduml"
+`;
+
+exports[`should generate transform public property properly 1`] = `
+"
+@startuml
+
+
+class MyClass {
+  +prop1 : Boolean
+}
+
+@enduml"
+`;
+
+exports[`should generate transform service properties  properly 1`] = `
+"
+@startuml
+
+class i18n << (S, #FF7700) >>
+MyClass ..> i18n : service
+class store << (S, #FF7700) >>
+MyClass ..> store : service
+class MyClass {
+  
+}
+
+@enduml"
+`;
