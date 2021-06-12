@@ -15,7 +15,7 @@
     "deploy": "npm version patch && git push && git push --tags && npm publish",
     "deploy-feat": "npm version minor && git push && git push --tags && npm publish",
     "lint": "eslint src/",
-    "debug": "node --inspect-brk ./node_modules/jest/bin/jest.js"
+    "debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand"
   },
   "author": "Rajasegar Chandran",
   "bugs": "https://github.com/rajasegar/ember-gen-uml/issues",

@@ -20,10 +20,11 @@ function transform(code) {
       debugger;
       if (p.node.declaration.type === 'ClassDeclaration') {
         className = p.node.declaration.id.name;
-        const superClass = p.node.declaration.superClass.name;
 
-        let extension = `${superClass} <|-- ${className}`;
-        extendDefs.push(extension);
+        // Disabling extensions since it is verbose
+        //const superClass = p.node.declaration.superClass.name;
+        //let extension = `${superClass} <|-- ${className}`;
+        //extendDefs.push(extension);
 
         let props = p.node.declaration.body.body;
 
@@ -42,21 +43,50 @@ function transform(code) {
         props.forEach(prop => {
           if (prop.decorators) {
             const [decorator] = prop.decorators;
-            switch (decorator.expression.name) {
-              case 'service':
-                {
-                  let serviceDef = `class ${prop.key.name} << (S, #FF7700) >>\n`;
-                  serviceDef += `${className} ..> ${prop.key.name} : service`;
-                  serviceDefs.push(serviceDef);
-                }
-                break;
+            if (decorator.expression.type === 'Identifier') {
+              switch (decorator.expression.name) {
+                case 'service':
+                  {
+                    let serviceDef = `class ${prop.key.name} << (S, #FF7700) >>\n`;
+                    serviceDef += `${className} ..> ${prop.key.name} : service`;
+                    serviceDefs.push(serviceDef);
+                  }
+                  break;
 
-              case 'attr':
-                memberDefs.push(`+${prop.key.name}`);
-                break;
+                case 'attr':
+                  memberDefs.push(`+${prop.key.name}`);
+                  break;
 
-              default:
-                debug('Unknown decorator: ', decorator.expression.name);
+                default:
+                  debug('Unknown decorator: ', decorator.expression.name);
+              }
+            } else {
+              const decoratorName = decorator.expression.callee.name;
+              const argValue = decorator.expression.arguments[0].value;
+              switch (decoratorName) {
+                case 'attr':
+                  memberDefs.push(`+${prop.key.name}: ${argValue}`);
+                  break;
+
+                case 'belongsTo':
+                  {
+                    let aggregation = `${argValue} o-- "belongsTo" ${className} `;
+                    extendDefs.push(aggregation);
+                    memberDefs.push(`+${prop.key.name}`);
+                  }
+                  break;
+
+                case 'hasMany':
+                  {
+                    let composition = `${argValue} *-- "hasMany" ${className} `;
+                    extendDefs.push(composition);
+                    memberDefs.push(`+${prop.key.name}`);
+                  }
+                  break;
+
+                default:
+                  debug('Unknown decorator: ', decorator.expression.callee.name);
+              }
             }
           }
         });
