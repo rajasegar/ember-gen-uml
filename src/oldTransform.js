@@ -48,14 +48,15 @@ function transform(node, name) {
         serviceDefs.push(serviceDef);
       }
 
-      if( prop.value &&
-        prop.value.type === 'CallExpression' &&
-        prop.value.callee.object && 
-        prop.value.callee.object.name === 'DS') {
+      const isValueCallExpression = prop.value && prop.value.type === 'CallExpression';
+      const isDSMethod = isValueCallExpression && prop.value.callee.object && prop.value.callee.object.name === 'DS';
+
+      if( isValueCallExpression ) {
 
         const args = prop.value.arguments;
         const argValue = args[0] && args[0].value;
-        switch (prop.value.callee.property.name) {
+        const propValueName = isDSMethod ? prop.value.callee.property.name : prop.value.callee.name;
+        switch (propValueName) {
           case 'attr':
             if(argValue) {
               memberDefs.push(`+${prop.key.name}: ${argValue}`);
@@ -81,7 +82,7 @@ function transform(node, name) {
             break;
 
           default:
-            debug('Unknown DS method: ', prop.value.callee.property.name);
+            debug('Unknown DS method: ', propValueName);
         }
       }
 

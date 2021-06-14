@@ -13,6 +13,18 @@ export default DS.Model.extend({
   expect(uml).toMatchSnapshot();
 });
 
+test('should generate model uml properly for Model.extend', function() {
+  const input = `
+export default Model.extend({
+  title: attr(),
+  name: attr(),
+  birthday: attr(),
+})`;
+
+  const uml = transform(input, 'Person');
+  expect(uml).toMatchSnapshot();
+});
+
 test('should generate model uml with data types properly', function() {
   const input = `
 export default DS.Model.extend({
