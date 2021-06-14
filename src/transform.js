@@ -71,7 +71,9 @@ function transform(code, componentName) {
 
                 case 'belongsTo':
                   {
-                    let aggregation = `${argValue} o-- "belongsTo" ${className} `;
+                    // PlantUML throws error if name has a dash
+                    const _argValue = argValue.replace('-', '');
+                    let aggregation = `${_argValue} o-- "belongsTo" ${className} `;
                     extendDefs.push(aggregation);
                     memberDefs.push(`+${prop.key.name}`);
                   }
@@ -79,7 +81,9 @@ function transform(code, componentName) {
 
                 case 'hasMany':
                   {
-                    let composition = `${argValue} *-- "hasMany" ${className} `;
+                    // PlantUML throws error if name has a dash
+                    const _argValue = argValue.replace('-', '');
+                    let composition = `${_argValue} *-- "hasMany" ${className} `;
                     extendDefs.push(composition);
                     memberDefs.push(`+${prop.key.name}`);
                   }

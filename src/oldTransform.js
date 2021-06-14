@@ -2,7 +2,6 @@ const t = require('@babel/types');
 const debug = require('debug')('ember-gen-uml');
 
 function transform(node, name) {
-
   let memberDefs = [];
   let serviceDefs = [];
   let extendDefs = [];
@@ -24,9 +23,8 @@ function transform(node, name) {
 
     let props = args[len - 1].properties || [];
 
-    if(node.declaration.callee.object.name === 'Component') {
-    memberDefs = props
-      .map(prop => {
+    if (node.declaration.callee.object.name === 'Component') {
+      memberDefs = props.map(prop => {
         let keyName = prop.key.type === 'StringLiteral' ? prop.key.value : prop.key.name;
         const scope = keyName.startsWith('_') ? '-' : '+';
         if (t.isObjectProperty(prop)) {
@@ -49,16 +47,16 @@ function transform(node, name) {
       }
 
       const isValueCallExpression = prop.value && prop.value.type === 'CallExpression';
-      const isDSMethod = isValueCallExpression && prop.value.callee.object && prop.value.callee.object.name === 'DS';
+      const isDSMethod =
+        isValueCallExpression && prop.value.callee.object && prop.value.callee.object.name === 'DS';
 
-      if( isValueCallExpression ) {
-
+      if (isValueCallExpression) {
         const args = prop.value.arguments;
         const argValue = args[0] && args[0].value;
         const propValueName = isDSMethod ? prop.value.callee.property.name : prop.value.callee.name;
         switch (propValueName) {
           case 'attr':
-            if(argValue) {
+            if (argValue) {
               memberDefs.push(`+${prop.key.name}: ${argValue}`);
             } else {
               memberDefs.push(`+${prop.key.name}`);
@@ -67,7 +65,9 @@ function transform(node, name) {
 
           case 'belongsTo':
             {
-              let aggregation = `${argValue} o-- "belongsTo" ${componentName} `;
+              // PlantUML throws error if name has a dash
+              const _argValue = argValue.replace('-', '');
+              let aggregation = `${_argValue} o-- "belongsTo" ${componentName} `;
               extendDefs.push(aggregation);
               memberDefs.push(`+${prop.key.name}`);
             }
@@ -75,7 +75,9 @@ function transform(node, name) {
 
           case 'hasMany':
             {
-              let composition = `${argValue} *-- "hasMany" ${componentName} `;
+              // PlantUML throws error if name has a dash
+              const _argValue = argValue.replace('-', '');
+              let composition = `${_argValue} *-- "hasMany" ${componentName} `;
               extendDefs.push(composition);
               memberDefs.push(`+${prop.key.name}`);
             }
@@ -85,7 +87,6 @@ function transform(node, name) {
             debug('Unknown DS method: ', propValueName);
         }
       }
-
     });
   }
 
