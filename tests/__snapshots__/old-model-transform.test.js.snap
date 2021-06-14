@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should generate model uml properly 1`] = `
+"
+@startuml
+
+
+class Person {
+  +title
+  +name
+  +birthday
+}
+
+@enduml"
+`;
+
+exports[`should generate model uml with belongsTo relationship 1`] = `
+"
+@startuml
+profile o-- \\"belongsTo\\" User 
+
+class User {
+  +profile
+}
+
+@enduml"
+`;
+
+exports[`should generate model uml with data types properly 1`] = `
+"
+@startuml
+
+
+class User {
+  +name: string
+  +age: number
+  +admin: boolean
+  +birthday: date
+}
+
+@enduml"
+`;
+
+exports[`should generate model uml with data types with default values properly 1`] = `
+"
+@startuml
+
+
+class User {
+  +username: string
+  +email: string
+  +verified: boolean
+  +createdAt: date
+}
+
+@enduml"
+`;
+
+exports[`should generate model uml with hasMany relationship 1`] = `
+"
+@startuml
+comment *-- \\"hasMany\\" BlogPost 
+
+class BlogPost {
+  +comments
+}
+
+@enduml"
+`;
+
+exports[`should generate model uml with one-to-many reflexive reelations 1`] = `
+"
+@startuml
+folder *-- \\"hasMany\\" Folder 
+folder o-- \\"belongsTo\\" Folder 
+
+class Folder {
+  +children
+  +parent
+}
+
+@enduml"
+`;
+
+exports[`should generate model uml with one-to-one reflexive relations 1`] = `
+"
+@startuml
+user o-- \\"belongsTo\\" User 
+
+class User {
+  +name: string
+  +bestFriend
+}
+
+@enduml"
+`;
+
+exports[`should generate model uml with reflexive relations without inverse 1`] = `
+"
+@startuml
+
+
+class Child {
+  +parent: belongsTo
+}
+
+@enduml"
+`;

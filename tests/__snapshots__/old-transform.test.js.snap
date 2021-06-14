@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should generate transform extends properly 1`] = `
+"
+@startuml
+Component1 <|-- Component
+Mixin1 <|-- Component
+class marketplace << (S, #FF7700) >>
+Component ..> marketplace : service
+class overlay << (S, #FF7700) >>
+Component ..> overlay : service
+class Component {
+  +marketplace
+  +overlay
+}
+
+@enduml"
+`;
+
+exports[`should generate transform multiple properties properly 1`] = `
+"
+@startuml
+
+
+class Component {
+  +prop1
+  +prop2
+}
+
+@enduml"
+`;
+
+exports[`should generate transform private method properly 1`] = `
+"
+@startuml
+
+
+class Component {
+  -_method1()
+}
+
+@enduml"
+`;
+
+exports[`should generate transform private property properly 1`] = `
+"
+@startuml
+
+
+class Component {
+  -_prop1
+}
+
+@enduml"
+`;
+
+exports[`should generate transform public method properly 1`] = `
+"
+@startuml
+
+
+class Component {
+  +method1()
+}
+
+@enduml"
+`;
+
+exports[`should generate transform public property properly 1`] = `
+"
+@startuml
+
+
+class Component {
+  +prop1
+}
+
+@enduml"
+`;
+
+exports[`should generate transform service properties  properly 1`] = `
+"
+@startuml
+
+class marketplace << (S, #FF7700) >>
+Component ..> marketplace : service
+class overlay << (S, #FF7700) >>
+Component ..> overlay : service
+class Component {
+  +marketplace
+  +overlay
+}
+
+@enduml"
+`;

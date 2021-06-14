@@ -2,8 +2,9 @@ const parser = require('@babel/parser');
 const traverse = require('@babel/traverse').default;
 const t = require('@babel/types');
 const debug = require('debug')('ember-gen-uml');
+const oldTransform = require('./oldTransform');
 
-function transform(code) {
+function transform(code, componentName) {
   const ast = parser.parse(code, {
     sourceType: 'module',
     plugins: [['decorators-legacy', { decoratorsBeforeExport: false }]],
@@ -17,7 +18,7 @@ function transform(code) {
   let className = '';
   traverse(ast, {
     ExportDefaultDeclaration(p) {
-      debugger;
+      debug('Declaration Type: ', p.node.declaration.type);
       if (p.node.declaration.type === 'ClassDeclaration') {
         className = p.node.declaration.id.name;
 
@@ -90,6 +91,12 @@ function transform(code) {
             }
           }
         });
+      } else {
+        const defs = oldTransform(p.node, componentName);
+        memberDefs = defs.memberDefs;
+        serviceDefs = defs.serviceDefs;
+        extendDefs = defs.extendDefs;
+        className = defs.className;
       }
     },
   });
