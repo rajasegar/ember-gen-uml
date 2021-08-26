@@ -15,7 +15,8 @@
     "deploy": "npm version patch && git push && git push --tags && npm publish",
     "deploy-feat": "npm version minor && git push && git push --tags && npm publish",
     "lint": "eslint src/",
-    "debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand"
+    "debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
+    "semantic-release" : "semantic-release"
   },
   "author": "Rajasegar Chandran",
   "bugs": "https://github.com/rajasegar/ember-gen-uml/issues",
@@ -43,10 +44,32 @@
     "walk-sync": "^2.0.2"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
     "coveralls": "^3.0.7",
     "eslint": "^6.6.0",
     "eslint-plugin-prettier": "^3.1.1",
     "jest": "^27.0.4",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "semantic-release": "^17.4.7"
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "CHANGELOG.md"
+          ],
+          "message": "release(version): Release ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ],
+      "@semantic-release/github"
+    ]
   }
 }
