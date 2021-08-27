@@ -1,3 +1,10 @@
+## [2.1.6](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.5...v2.1.6) (2021-08-27)
+
+
+### Bug Fixes
+
+* **deps:** bump walk-sync from 2.0.2 to 3.0.0 ([5f55b96](https://github.com/rajasegar/ember-gen-uml/commit/5f55b96c9569597963653115000281a88f71998d))
+
 ## [2.1.5](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.4...v2.1.5) (2021-08-26)
 
 
