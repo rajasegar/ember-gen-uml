@@ -41,7 +41,7 @@
     "commander": "^8.1.0",
     "debug": "^4.3.1",
     "typescript": "^4.3.5",
-    "walk-sync": "^2.0.2"
+    "walk-sync": "^3.0.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^5.0.1",
