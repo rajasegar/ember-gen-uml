@@ -1,3 +1,10 @@
+## [2.1.10](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.9...v2.1.10) (2021-09-06)
+
+
+### Bug Fixes
+
+* **deps:** bump @babel/types from 7.15.0 to 7.15.4 ([60c8c68](https://github.com/rajasegar/ember-gen-uml/commit/60c8c68064da4be2f964f047e9761b13ef11eaed))
+
 ## [2.1.9](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.8...v2.1.9) (2021-09-06)
 
 
