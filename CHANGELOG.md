@@ -1,3 +1,10 @@
+## [2.1.9](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.8...v2.1.9) (2021-09-06)
+
+
+### Bug Fixes
+
+* **deps:** bump @babel/plugin-proposal-decorators from 7.14.5 to 7.15.4 ([bdb9647](https://github.com/rajasegar/ember-gen-uml/commit/bdb96472b97a36be29bb3df10a65f4134d44c738))
+
 ## [2.1.8](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.7...v2.1.8) (2021-09-06)
 
 
