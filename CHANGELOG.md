@@ -1,3 +1,10 @@
+## [2.1.11](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.10...v2.1.11) (2021-09-07)
+
+
+### Bug Fixes
+
+* **deps:** bump @babel/parser from 7.15.3 to 7.15.5 ([77b231f](https://github.com/rajasegar/ember-gen-uml/commit/77b231f90edd3107e44e48d873f3bad75556fa45))
+
 ## [2.1.10](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.9...v2.1.10) (2021-09-06)
 
 
