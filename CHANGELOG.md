@@ -1,3 +1,10 @@
+## [2.1.12](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.11...v2.1.12) (2021-09-07)
+
+
+### Bug Fixes
+
+* **deps:** bump @babel/traverse from 7.15.0 to 7.15.4 ([76deb89](https://github.com/rajasegar/ember-gen-uml/commit/76deb892dc8378ce49ace7f41d07429792388fb7))
+
 ## [2.1.11](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.10...v2.1.11) (2021-09-07)
 
 
