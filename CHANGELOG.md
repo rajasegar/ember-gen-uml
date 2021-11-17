@@ -1,3 +1,10 @@
+## [2.1.16](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.15...v2.1.16) (2021-11-17)
+
+
+### Bug Fixes
+
+* **deps:** bump commander from 8.1.0 to 8.3.0 ([44962aa](https://github.com/rajasegar/ember-gen-uml/commit/44962aaa4bce5a2cdcb0ce87b5dc3450ce946c37))
+
 ## [2.1.15](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.14...v2.1.15) (2021-11-17)
 
 
