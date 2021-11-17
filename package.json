@@ -1,6 +1,6 @@
 {
   "name": "ember-gen-uml",
-  "version": "2.1.13",
+  "version": "2.1.14",
   "description": "A CLI to generate PlantUML compatible UML diagrams from Ember components",
   "main": "src/main.js",
   "keywords": [

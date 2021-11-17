@@ -1,3 +1,10 @@
+## [2.1.14](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.13...v2.1.14) (2021-11-17)
+
+
+### Bug Fixes
+
+* **deps:** bump @babel/preset-env from 7.15.4 to 7.16.4 ([f28a034](https://github.com/rajasegar/ember-gen-uml/commit/f28a0349e62691b18a877a1b163c36aea9dd33ba))
+
 ## [2.1.13](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.12...v2.1.13) (2021-09-17)
 
 
