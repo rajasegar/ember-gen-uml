@@ -1,3 +1,10 @@
+## [2.1.17](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.16...v2.1.17) (2021-11-17)
+
+
+### Bug Fixes
+
+* **deps:** bump @babel/types from 7.15.4 to 7.16.0 ([01eb449](https://github.com/rajasegar/ember-gen-uml/commit/01eb4495b2f800991417fdadc00af9749fa739de))
+
 ## [2.1.16](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.15...v2.1.16) (2021-11-17)
 
 
