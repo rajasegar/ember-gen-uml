@@ -1,3 +1,10 @@
+## [2.1.15](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.14...v2.1.15) (2021-11-17)
+
+
+### Bug Fixes
+
+* **deps:** bump typescript from 4.4.2 to 4.4.4 ([8c3f2ee](https://github.com/rajasegar/ember-gen-uml/commit/8c3f2eef1714887a05a0dd0385e9583efa022da0))
+
 ## [2.1.14](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.13...v2.1.14) (2021-11-17)
 
 
