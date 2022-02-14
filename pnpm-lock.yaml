@@ -14,7 +14,7 @@ specifiers:
   debug: ^4.3.1
   eslint: 7.32.0
   eslint-plugin-prettier: 4.0.0
-  jest: 27.1.1
+  jest: 27.5.1
   prettier: 2.3.2
   semantic-release: 19.0.2
   typescript: ^4.3.5
@@ -38,7 +38,7 @@ devDependencies:
   coveralls: 3.1.1
   eslint: 7.32.0
   eslint-plugin-prettier: 4.0.0_eslint@7.32.0+prettier@2.3.2
-  jest: 27.1.1
+  jest: 27.5.1
   prettier: 2.3.2
   semantic-release: 19.0.2
 
@@ -69,7 +69,7 @@ packages:
       '@babel/helper-compilation-targets': 7.14.5_@babel+core@7.14.5
       '@babel/helper-module-transforms': 7.14.5
       '@babel/helpers': 7.14.5
-      '@babel/parser': 7.14.5
+      '@babel/parser': 7.17.0
       '@babel/template': 7.14.5
       '@babel/traverse': 7.14.5
       '@babel/types': 7.14.5
@@ -1383,7 +1383,7 @@ packages:
       exit: 0.1.2
       glob: 7.1.7
       graceful-fs: 4.2.9
-      istanbul-lib-coverage: 3.0.0
+      istanbul-lib-coverage: 3.2.0
       istanbul-lib-instrument: 5.1.0
       istanbul-lib-report: 3.0.0
       istanbul-lib-source-maps: 4.0.0
@@ -3453,11 +3453,6 @@ packages:
       lodash.uniqby: 4.7.0
     dev: true
 
-  /istanbul-lib-coverage/3.0.0:
-    resolution: {integrity: sha512-UiUIqxMgRDET6eR+o5HbfRYP1l0hqkWOs7vNxC/mggutCMUIhWMm8gAHb8tHlyfD3/l6rlgNA5cKdDzEAf6hEg==}
-    engines: {node: '>=8'}
-    dev: true
-
   /istanbul-lib-coverage/3.2.0:
     resolution: {integrity: sha512-eOeJ5BHCmHYvQK7xt9GkdHuzuCGS1Y6g9Gvnx3Ym33fz/HpLRYxiS0wHNr+m/MBC8B647Xt608vCDEvhl9c6Mw==}
     engines: {node: '>=8'}
@@ -3954,8 +3949,8 @@ packages:
       supports-color: 8.1.1
     dev: true
 
-  /jest/27.1.1:
-    resolution: {integrity: sha512-LFTEZOhoZNR/2DQM3OCaK5xC6c55c1OWhYh0njRsoHX0qd6x4nkcgenkSH0JKjsAGMTmmJAoL7/oqYHMfwhruA==}
+  /jest/27.5.1:
+    resolution: {integrity: sha512-Yn0mADZB89zTtjkPJEXwrac3LHudkQMR+Paqa8uxJHCBr9agxztUifWCyiYrjhMPBoUVBjyny0I7XH6ozDr7QQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     hasBin: true
     peerDependencies:
