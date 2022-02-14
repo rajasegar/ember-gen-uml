@@ -1,3 +1,10 @@
+## [2.1.18](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.17...v2.1.18) (2022-02-14)
+
+
+### Bug Fixes
+
+* update license year, new release ([432da6f](https://github.com/rajasegar/ember-gen-uml/commit/432da6f7a9660399f3f04ecf34cc99abc82f8c48))
+
 ## [2.1.17](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.16...v2.1.17) (2021-11-17)
 
 
