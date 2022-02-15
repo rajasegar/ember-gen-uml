@@ -9,7 +9,7 @@ specifiers:
   '@babel/types': ^7.14.5
   '@semantic-release/changelog': 6.0.1
   '@semantic-release/git': 10.0.1
-  commander: ^8.1.0
+  commander: ^9.0.0
   coveralls: 3.1.1
   debug: ^4.3.1
   eslint: 8.9.0
@@ -27,7 +27,7 @@ dependencies:
   '@babel/preset-env': 7.14.5
   '@babel/traverse': 7.14.5
   '@babel/types': 7.14.5
-  commander: 8.3.0
+  commander: 9.0.0
   debug: 4.3.1
   typescript: 4.5.5
   walk-sync: 3.0.0
@@ -2313,9 +2313,9 @@ packages:
       delayed-stream: 1.0.0
     dev: true
 
-  /commander/8.3.0:
-    resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
-    engines: {node: '>= 12'}
+  /commander/9.0.0:
+    resolution: {integrity: sha512-JJfP2saEKbQqvW+FI93OYUB4ByV5cizMpFMiiJI8xDbBvQvSkIk0VvQdn1CZ8mqAO8Loq2h0gYTYtDFUZUeERw==}
+    engines: {node: ^12.20.0 || >=14}
     dev: false
 
   /compare-func/2.0.0:
