@@ -1,3 +1,10 @@
+## [2.1.19](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.18...v2.1.19) (2022-02-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to v9 ([c37ced1](https://github.com/rajasegar/ember-gen-uml/commit/c37ced14b5469c013e0e6fb60238103e9ac3cdcd))
+
 ## [2.1.18](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.17...v2.1.18) (2022-02-14)
 
 
