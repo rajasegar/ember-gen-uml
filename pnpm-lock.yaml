@@ -7,8 +7,8 @@ specifiers:
   '@babel/preset-env': ^7.14.5
   '@babel/traverse': ^7.14.5
   '@babel/types': ^7.14.5
-  '@semantic-release/changelog': 5.0.1
-  '@semantic-release/git': 9.0.1
+  '@semantic-release/changelog': 6.0.1
+  '@semantic-release/git': 10.0.1
   commander: ^8.1.0
   coveralls: 3.1.1
   debug: ^4.3.1
@@ -33,8 +33,8 @@ dependencies:
   walk-sync: 3.0.0
 
 devDependencies:
-  '@semantic-release/changelog': 5.0.1_semantic-release@19.0.2
-  '@semantic-release/git': 9.0.1_semantic-release@19.0.2
+  '@semantic-release/changelog': 6.0.1_semantic-release@19.0.2
+  '@semantic-release/git': 10.0.1_semantic-release@19.0.2
   coveralls: 3.1.1
   eslint: 8.9.0
   eslint-plugin-prettier: 4.0.0_eslint@8.9.0+prettier@2.5.1
@@ -1580,13 +1580,13 @@ packages:
       '@octokit/openapi-types': 9.7.0
     dev: true
 
-  /@semantic-release/changelog/5.0.1_semantic-release@19.0.2:
-    resolution: {integrity: sha512-unvqHo5jk4dvAf2nZ3aw4imrlwQ2I50eVVvq9D47Qc3R+keNqepx1vDYwkjF8guFXnOYaYcR28yrZWno1hFbiw==}
-    engines: {node: '>=10.18'}
+  /@semantic-release/changelog/6.0.1_semantic-release@19.0.2:
+    resolution: {integrity: sha512-FT+tAGdWHr0RCM3EpWegWnvXJ05LQtBkQUaQRIExONoXjVjLuOILNm4DEKNaV+GAQyJjbLRVs57ti//GypH6PA==}
+    engines: {node: '>=14.17'}
     peerDependencies:
-      semantic-release: '>=15.8.0 <18.0.0'
+      semantic-release: '>=18.0.0'
     dependencies:
-      '@semantic-release/error': 2.2.0
+      '@semantic-release/error': 3.0.0
       aggregate-error: 3.1.0
       fs-extra: 9.1.0
       lodash: 4.17.21
@@ -1620,13 +1620,13 @@ packages:
     engines: {node: '>=14.17'}
     dev: true
 
-  /@semantic-release/git/9.0.1_semantic-release@19.0.2:
-    resolution: {integrity: sha512-75P03s9v0xfrH9ffhDVWRIX0fgWBvJMmXhUU0rMTKYz47oMXU5O95M/ocgIKnVJlWZYoC+LpIe4Ye6ev8CrlUQ==}
-    engines: {node: '>=10.18'}
+  /@semantic-release/git/10.0.1_semantic-release@19.0.2:
+    resolution: {integrity: sha512-eWrx5KguUcU2wUPaO6sfvZI0wPafUKAMNC18aXY4EnNcrZL86dEmpNVnC9uMpGZkmZJ9EfCVJBQx4pV4EMGT1w==}
+    engines: {node: '>=14.17'}
     peerDependencies:
-      semantic-release: '>=16.0.0 <18.0.0'
+      semantic-release: '>=18.0.0'
     dependencies:
-      '@semantic-release/error': 2.2.0
+      '@semantic-release/error': 3.0.0
       aggregate-error: 3.1.0
       debug: 4.3.2
       dir-glob: 3.0.1
