@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const program = require('commander');
-const generate = require('../src/main');
+const { generate } = require('../src/main');
 
 program
 .version('1.2.0','-v, --version', 'CLI Version')

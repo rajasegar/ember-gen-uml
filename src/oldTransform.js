@@ -1,3 +1,4 @@
+// This is for handling Pre-Octane syntax 
 const t = require('@babel/types');
 const debug = require('debug')('ember-gen-uml');
 
@@ -23,7 +24,8 @@ function transform(node, name) {
 
     let props = args[len - 1].properties || [];
 
-    if (node.declaration.callee.object.name === 'Component') {
+      const AllowedEntities = ['Component', 'Mixin', 'Service'];
+      if (AllowedEntities.includes(node.declaration.callee.object.name)) {
       memberDefs = props.map(prop => {
         let keyName = prop.key.type === 'StringLiteral' ? prop.key.value : prop.key.name;
         const scope = keyName.startsWith('_') ? '-' : '+';
