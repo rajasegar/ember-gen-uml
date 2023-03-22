@@ -1,3 +1,10 @@
+## [2.1.22](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.21...v2.1.22) (2023-03-22)
+
+
+### Bug Fixes
+
+* **deps:** update babel monorepo to v7.21.3 ([f35588e](https://github.com/rajasegar/ember-gen-uml/commit/f35588eab66af1fc3f288d4bbee159b8a41fecc4))
+
 ## [2.1.20](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.19...v2.1.20) (2023-03-22)
 
 
