@@ -17,7 +17,7 @@ specifiers:
   jest: 27.5.1
   prettier: 2.8.6
   semantic-release: 19.0.5
-  typescript: ^4.3.5
+  typescript: ^5.0.0
   walk-sync: ^3.0.0
 
 dependencies:
@@ -29,7 +29,7 @@ dependencies:
   '@babel/types': 7.14.5
   commander: 9.0.0
   debug: 4.3.1
-  typescript: 4.5.5
+  typescript: 5.0.2
   walk-sync: 3.0.0
 
 devDependencies:
@@ -5531,9 +5531,9 @@ packages:
       is-typedarray: 1.0.0
     dev: true
 
-  /typescript/4.5.5:
-    resolution: {integrity: sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==}
-    engines: {node: '>=4.2.0'}
+  /typescript/5.0.2:
+    resolution: {integrity: sha512-wVORMBGO/FAs/++blGNeAVdbNKtIh1rbBL2EyQ1+J9lClJ93KiiKe8PmFIVdXhHcyv44SL9oglmfeSsndo0jRw==}
+    engines: {node: '>=12.20'}
     hasBin: true
     dev: false
 

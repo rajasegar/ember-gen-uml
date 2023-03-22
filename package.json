@@ -40,7 +40,7 @@
     "@babel/types": "^7.14.5",
     "commander": "^9.0.0",
     "debug": "^4.3.1",
-    "typescript": "^4.3.5",
+    "typescript": "^5.0.0",
     "walk-sync": "^3.0.0"
   },
   "devDependencies": {
