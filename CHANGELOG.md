@@ -1,3 +1,24 @@
+## [2.1.20](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.19...v2.1.20) (2023-03-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency debug to v4.3.4 ([3298672](https://github.com/rajasegar/ember-gen-uml/commit/32986723ff9c2e987141c9c03a06023f40bb7180))
+
+## [2.1.19](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.18...v2.1.19) (2022-02-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to v9 ([c37ced1](https://github.com/rajasegar/ember-gen-uml/commit/c37ced14b5469c013e0e6fb60238103e9ac3cdcd))
+
+## [2.1.18](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.17...v2.1.18) (2022-02-14)
+
+
+### Bug Fixes
+
+* update license year, new release ([432da6f](https://github.com/rajasegar/ember-gen-uml/commit/432da6f7a9660399f3f04ecf34cc99abc82f8c48))
+
 ## [2.1.17](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.16...v2.1.17) (2021-11-17)
 
 
