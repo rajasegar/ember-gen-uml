@@ -13,7 +13,7 @@ specifiers:
   coveralls: 3.1.1
   debug: ^4.3.1
   eslint: 8.36.0
-  eslint-plugin-prettier: 4.0.0
+  eslint-plugin-prettier: 4.2.1
   jest: 27.5.1
   prettier: 2.6.2
   semantic-release: 19.0.5
@@ -37,7 +37,7 @@ devDependencies:
   '@semantic-release/git': 10.0.1_semantic-release@19.0.5
   coveralls: 3.1.1
   eslint: 8.36.0
-  eslint-plugin-prettier: 4.0.0_eslint@8.36.0+prettier@2.6.2
+  eslint-plugin-prettier: 4.2.1_eslint@8.36.0+prettier@2.6.2
   jest: 27.5.1
   prettier: 2.6.2
   semantic-release: 19.0.5
@@ -2691,9 +2691,9 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /eslint-plugin-prettier/4.0.0_eslint@8.36.0+prettier@2.6.2:
-    resolution: {integrity: sha512-98MqmCJ7vJodoQK359bqQWaxOE0CS8paAz/GgjaZLyex4TTk3g9HugoO89EqWCrFiOqn9EVvcoo7gZzONCWVwQ==}
-    engines: {node: '>=6.0.0'}
+  /eslint-plugin-prettier/4.2.1_eslint@8.36.0+prettier@2.6.2:
+    resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
+    engines: {node: '>=12.0.0'}
     peerDependencies:
       eslint: '>=7.28.0'
       eslint-config-prettier: '*'
