@@ -1,3 +1,10 @@
+## [2.1.24](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.23...v2.1.24) (2023-12-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @babel/traverse to v7.23.2 [security] ([ec90689](https://github.com/rajasegar/ember-gen-uml/commit/ec9068964793d2e5c5e852f47dd9292afa6400c2))
+
 ## [2.1.23](https://github.com/rajasegar/ember-gen-uml/compare/v2.1.22...v2.1.23) (2023-03-22)
 
 
